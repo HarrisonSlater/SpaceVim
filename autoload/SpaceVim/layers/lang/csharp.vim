@@ -56,7 +56,9 @@ function! SpaceVim#layers#lang#csharp#config() abort
     endif
 
     " Automatically add new cs files to the nearest project on save
-    autocmd BufWritePost *.cs call OmniSharp#AddToProject()
+    "autocmd BufWritePost *.cs call OmniSharp#AddToProject() //
+	
+	autocmd InsertLeave *.cs call OmniSharp#HighlightBuffer()
 
     " Show type information automatically when the cursor stops moving
     autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
@@ -68,9 +70,9 @@ endfunction
 " Add language specific mappings
 function! s:language_specified_mappings() abort
   " Suggested bindings
-  call SpaceVim#mapping#space#langSPC('nmap', ['l','b'], 
-        \ 'OmniSharpBuildAsync', 
-        \ 'compile the project', 1)
+  "call SpaceVim#mapping#space#langSPC('nmap', ['l','b'], 
+  "      \ 'OmniSharpBuildAsync', 
+  "      \ 'compile the project', 1)
   call SpaceVim#mapping#space#langSPC('nmap', ['l','f'], 
         \ 'OmniSharpCodeFormat', 
         \ 'format current file', 1)
@@ -90,7 +92,7 @@ function! s:language_specified_mappings() abort
         \ 'OmniSharpFindImplementations',
         \ 'find implementations', 1)
   call SpaceVim#mapping#space#langSPC('nmap', ['l','g', 't'],
-        \ 'OmniSharpFindType',
+        \ 'OmniSharpTypeLookup',
         \ 'find type', 1)
   call SpaceVim#mapping#space#langSPC('nmap', ['l','g', 's'],
         \ 'OmniSharpFindSymbol',
@@ -104,9 +106,9 @@ function! s:language_specified_mappings() abort
 
   " Server interaction
   let g:_spacevim_mappings_space.l.s = {'name' : '+Server interaction'}
-  call SpaceVim#mapping#space#langSPC('nmap', ['l','s', 'r'],
-        \ 'OmniSharpReloadSolution',
-        \ 'Reload the solution', 1)
+  "call SpaceVim#mapping#space#langSPC('nmap', ['l','s', 'r'],
+  "      \ 'OmniSharpReloadSolution',
+  "      \ 'Reload the solution', 1)
   call SpaceVim#mapping#space#langSPC('nmap', ['l','s', 's'],
         \ 'OmniSharpStartServer',
         \ 'Start the OmniSharp server', 1)
