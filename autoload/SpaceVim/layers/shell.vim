@@ -196,7 +196,7 @@ function! s:open_default_shell(open_with_file_cwd) abort
     if exists(':terminal')
       if has('nvim')
         if s:SYSTEM.isWindows
-          let shell = empty($SHELL) ? 'cmd.exe' : $SHELL
+          let shell = empty($SHELL) ? 'powershell.exe' : $SHELL
         else
           let shell = empty($SHELL) ? 'bash' : $SHELL
         endif
@@ -218,7 +218,7 @@ function! s:open_default_shell(open_with_file_cwd) abort
       else 
         " handle vim terminal
         if s:SYSTEM.isWindows
-          let shell = empty($SHELL) ? 'cmd.exe' : $SHELL
+          let shell = empty($SHELL) ? 'powershell.exe' : $SHELL
         else
           let shell = empty($SHELL) ? 'bash' : $SHELL
         endif
